@@ -1,6 +1,6 @@
 <div class="row flex-lg-row-reverse align-items-center g-5 py-4 mb-4">
     <div class="col-12 col-lg-6">
-      <img src="/img/hero-image.png" width="607" height="510" class="d-block mx-lg-auto img-fluid" loading="lazy" alt="Projects With Node.js">
+      <img src="/img/t.gif" width="607" height="510" class="d-block mx-lg-auto img-fluid" loading="lazy" alt="Projects With Node.js">
     </div>
   
     <div class="col-12 col-lg-6">
@@ -49,14 +49,14 @@
 <!-- Latest Start -->
 <section class="pb-4 pt-4">
   <div class="d-flex mb-2 align-items-center">
-    <h2>Latest Recipes</h2>
+    <h2>Latest Projects</h2>
     <a href="/recipe" class="ms-auto">View all</a>
   </div>
   
   <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 ">
     
     <% if(food!='') { %>
-      <% food.latest.forEach(function(recipe,index) { %>
+      <% food.lat.forEach(function(recipe,index) { %>
         <a href="/recipe/<%- recipe.id %>" class="col text-center category__link">
         <div class="category__img category__img--large shadow">
           <img src= "uploads/<%- recipe.image %>" alt="<%- recipe.name %>" loading="lazy">
@@ -73,14 +73,14 @@
 <!-- Indian Start -->
 <section class="pb-4 pt-4">
   <div class="d-flex mb-2 align-items-center">
-    <h2>Indian Recipes</h2>
-    <a href="/categories/Indian" class="ms-auto">View More</a>
+    <h2>Web Dev Projects</h2>
+    <a href="/categories/WEB DEV" class="ms-auto">View More</a>
   </div>
   
   <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 ">
     
-    <% if(typeof food.indian!='undefined' && food.indian.length>0) { %>
-      <% food.indian.forEach(function(recipe,index) { %>
+    <% if(typeof food.Webdev!='undefined' && food.Webdev.length>0) { %>
+      <% food.Webdev.forEach(function(recipe,index) { %>
         <a href="/recipe/<%- recipe._id %>" class="col text-center category__link">
         <div class="category__img category__img--large shadow">
           <img src= "uploads/<%- recipe.image %>" alt="<%- recipe.name %>" loading="lazy">

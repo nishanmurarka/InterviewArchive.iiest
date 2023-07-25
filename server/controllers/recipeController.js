@@ -8,9 +8,9 @@ exports.homepage=async(req, res)=>{
     
     const limitnumber=5; // so as to display the only 5 cats on top
     const categories= await Category.find({}).limit(limitnumber);
-    const latest=await Recipe.find({}).sort({_id: -1}).limit(limitnumber);
-    const indian=await Recipe.find({'category':'Indian'}).limit(limitnumber);
-    const food={latest, indian};
+    const lat=await Recipe.find({}).sort({_id: -1}).limit(limitnumber);
+    const Webdev=await Recipe.find({'category':'WEB DEV'}).limit(limitnumber);
+    const food={lat, Webdev};
     try {
         res.render('index',{title: 'Cooking Blog - Homepage', categories, food});
     } catch (error) {
