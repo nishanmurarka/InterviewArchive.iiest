@@ -50,14 +50,14 @@
 <section class="pb-4 pt-4">
   <div class="d-flex mb-2 align-items-center">
     <h2>Latest Projects</h2>
-    <a href="/recipe" class="ms-auto">View all</a>
+    <a href="/project" class="ms-auto">View all</a>
   </div>
   
   <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 ">
     
     <% if(food!='') { %>
       <% food.lat.forEach(function(recipe,index) { %>
-        <a href="/recipe/<%- recipe.id %>" class="col text-center category__link">
+        <a href="/project/<%- recipe.id %>" class="col text-center category__link">
         <div class="category__img category__img--large shadow">
           <img src= "uploads/<%- recipe.image %>" alt="<%- recipe.name %>" loading="lazy">
         </div>
@@ -81,7 +81,7 @@
     
     <% if(typeof food.Webdev!='undefined' && food.Webdev.length>0) { %>
       <% food.Webdev.forEach(function(recipe,index) { %>
-        <a href="/recipe/<%- recipe._id %>" class="col text-center category__link">
+        <a href="/project/<%- recipe._id %>" class="col text-center category__link">
         <div class="category__img category__img--large shadow">
           <img src= "uploads/<%- recipe.image %>" alt="<%- recipe.name %>" loading="lazy">
         </div>

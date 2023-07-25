@@ -5,8 +5,8 @@ const recipeController=require('../controllers/recipeController');
 
 router.get('/',recipeController.homepage);
 
-router.get('/recipe',recipeController.exploreAllRecipes);
-router.get('/recipe/:id',recipeController.exploreRecipes);
+router.get('/project',recipeController.exploreAllRecipes);
+router.get('/project/:id',recipeController.exploreRecipes);
 
 router.get('/categories',recipeController.exploreCategories);
 router.get('/categories/:id',recipeController.exploreCategoriesById);
