@@ -176,10 +176,10 @@ exports.contact=async(req, res)=>{
       await newRecipe.save();
   
       req.flash('infoSubmit', 'Project has been added.')
-      res.redirect('/submit-recipe');
+      res.redirect('/submit-project');
     } catch (error) {
       req.flash('infoErrors', error);
-      res.redirect('/submit-recipe');
+      res.redirect('/submit-project');
     }
   }
   
