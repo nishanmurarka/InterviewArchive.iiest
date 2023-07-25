@@ -27,7 +27,7 @@ exports.exploreCategories=async(req, res)=>{
     const categories= await Category.find({}).limit(limitnumber);
     
     try {
-        res.render('categories',{title: 'Cooking Blog - Categories', categories});
+        res.render('categories',{title: 'Project Blog - Categories', categories});
     } catch (error) {
         res.status(500).send({message: error.message|| "Error Occured"});
     }
@@ -41,7 +41,7 @@ exports.exploreCategories=async(req, res)=>{
     try {
         let categoryid=req.params.id;
         const categoryById=await Recipe.find({'category':categoryid});
-        res.render('categories',{title:'Cooking Blog- Categories', categoryById,categoryid});
+        res.render('categories',{title:'Project Blog- Categories', categoryById,categoryid});
     } catch (error) {
         res.status(500).send({message: error.message|| "Error Occured"});
     }
@@ -56,7 +56,7 @@ exports.exploreRecipes=async(req, res)=>{
         let recipeId= req.params.id;
         
         const recipe = await Recipe.findById(recipeId);
-        res.render('recipe',{title: 'Cooking Blog - Recipe',recipe});
+        res.render('recipe',{title: 'Project Blog - Product',recipe});
     } catch (error) {
         res.status(500).send({message: error.message|| "Error Occured"});
     }
@@ -72,7 +72,7 @@ exports.exploreRecipes=async(req, res)=>{
       // await Recipe.deleteOne(del[0]);
       
         const recipeAll = await Recipe.find({});
-        res.render('all',{title: 'Cooking Blog - All Recipes',recipeAll});
+        res.render('all',{title: 'Project Blog - All Products',recipeAll});
     } catch (error) {
         res.status(500).send({message: error.message|| "Error Occured"});
     }
@@ -87,7 +87,7 @@ exports.exploreRecipes=async(req, res)=>{
     try {
         let searchterm=req.body.searchTerm;
         const recipe= await Recipe.find({$text:{$search: searchterm,$diacriticSensitive:true}});
-        res.render('search',{title: 'Cooking Blog - Search',recipe});
+        res.render('search',{title: 'Project Blog - Search',recipe});
     } catch (error) {
         res.status(500).send({message: error.message|| "Error Occured"});
     }
@@ -101,7 +101,7 @@ exports.exploreRecipes=async(req, res)=>{
     try {
         const limitnumber=20;
         const recipe= await Recipe.find({}).sort({_id:-1}).limit(limitnumber);
-        res.render('explore-latest',{title: 'Cooking Blog - Recipe',recipe});
+        res.render('explore-latest',{title: 'Project Blog - Product',recipe});
     } catch (error) {
         res.status(500).send({message: error.message|| "Error Occured"});
     }
@@ -118,7 +118,7 @@ exports.exploreRecipes=async(req, res)=>{
         let random=Math.floor(Math.random() * count);
         const recipe=await Recipe.findOne().skip(random).exec();
         
-        res.render('explore-random',{title: 'Cooking Blog - Recipe',recipe});
+        res.render('explore-random',{title: 'Project Blog - Product',recipe});
     } catch (error) {
         res.status(500).send({message: error.message|| "Error Occured"});
     }
@@ -133,13 +133,13 @@ exports.exploreRecipes=async(req, res)=>{
 exports.submitRecipe = async(req, res) => {
     const infoErrorsObj = req.flash('infoErrors');
     const infoSubmitObj = req.flash('infoSubmit');
-    res.render('submit-recipe', { title: 'Cooking Blog - Submit Recipe', infoErrorsObj, infoSubmitObj  } );
+    res.render('submit-recipe', { title: 'Project Blog - Submit Project', infoErrorsObj, infoSubmitObj  } );
   }
   
 exports.contact=async(req, res)=>{
     const infoErrorsObj = req.flash('infoErrors');
     const infoSubmitObj = req.flash('infoSubmit');
-    res.render('contact', { title: 'Cooking Blog - Contact', infoErrorsObj, infoSubmitObj  } );
+    res.render('contact', { title: 'Project Blog - Contact', infoErrorsObj, infoSubmitObj  } );
   }
 
   exports.submitRecipeOnPost = async(req, res) => {
@@ -175,7 +175,7 @@ exports.contact=async(req, res)=>{
       
       await newRecipe.save();
   
-      req.flash('infoSubmit', 'Recipe has been added.')
+      req.flash('infoSubmit', 'Project has been added.')
       res.redirect('/submit-recipe');
     } catch (error) {
       req.flash('infoErrors', error);
@@ -205,7 +205,7 @@ exports.contactOnPost=async(req, res)=>{
 exports.about=async(req, res)=>{
     
   try {
-      res.render('about',{title: 'Cooking Blog - About'});
+      res.render('about',{title: 'Project Blog - About'});
   } catch (error) {
       res.status(500).send({message: error.message|| "Error Occured"});
   }
