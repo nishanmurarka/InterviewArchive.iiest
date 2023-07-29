@@ -12,7 +12,7 @@ exports.homepage=async(req, res)=>{
     const Webdev=await Recipe.find({'category':'WEB DEV'}).limit(limitnumber);
     const food={lat, Webdev};
     try {
-        res.render('index',{title: 'Cooking Blog - Homepage', categories, food});
+        res.render('index',{title: 'Homepage', categories, food});
     } catch (error) {
         res.status(500).send({message: error.message|| "Error Occured"});
     }
@@ -27,7 +27,7 @@ exports.exploreCategories=async(req, res)=>{
     const categories= await Category.find({}).limit(limitnumber);
     
     try {
-        res.render('categories',{title: 'Project Blog - Categories', categories});
+        res.render('categories',{title: 'Categories', categories});
     } catch (error) {
         res.status(500).send({message: error.message|| "Error Occured"});
     }
@@ -41,7 +41,7 @@ exports.exploreCategories=async(req, res)=>{
     try {
         let categoryid=req.params.id;
         const categoryById=await Recipe.find({'category':categoryid});
-        res.render('categories',{title:'Project Blog- Categories', categoryById,categoryid});
+        res.render('categories',{title:'Categories', categoryById,categoryid});
     } catch (error) {
         res.status(500).send({message: error.message|| "Error Occured"});
     }
@@ -56,7 +56,7 @@ exports.exploreRecipes=async(req, res)=>{
         let recipeId= req.params.id;
         
         const recipe = await Recipe.findById(recipeId);
-        res.render('recipe',{title: 'Project Blog - Product',recipe});
+        res.render('recipe',{title: 'Product',recipe});
     } catch (error) {
         res.status(500).send({message: error.message|| "Error Occured"});
     }
@@ -72,7 +72,7 @@ exports.exploreRecipes=async(req, res)=>{
       // await Recipe.deleteOne(del[0]);
       
         const recipeAll = await Recipe.find({});
-        res.render('all',{title: 'Project Blog - All Products',recipeAll});
+        res.render('all',{title: 'All Products',recipeAll});
     } catch (error) {
         res.status(500).send({message: error.message|| "Error Occured"});
     }
@@ -87,7 +87,7 @@ exports.exploreRecipes=async(req, res)=>{
     try {
         let searchterm=req.body.searchTerm;
         const recipe= await Recipe.find({$text:{$search: searchterm,$diacriticSensitive:true}});
-        res.render('search',{title: 'Project Blog - Search',recipe});
+        res.render('search',{title: 'Search',recipe});
     } catch (error) {
         res.status(500).send({message: error.message|| "Error Occured"});
     }
@@ -101,7 +101,7 @@ exports.exploreRecipes=async(req, res)=>{
     try {
         const limitnumber=20;
         const recipe= await Recipe.find({}).sort({_id:-1}).limit(limitnumber);
-        res.render('explore-latest',{title: 'Project Blog - Product',recipe});
+        res.render('explore-latest',{title: 'Product',recipe});
     } catch (error) {
         res.status(500).send({message: error.message|| "Error Occured"});
     }
@@ -118,7 +118,7 @@ exports.exploreRecipes=async(req, res)=>{
         let random=Math.floor(Math.random() * count);
         const recipe=await Recipe.findOne().skip(random).exec();
         
-        res.render('explore-random',{title: 'Project Blog - Product',recipe});
+        res.render('explore-random',{title: 'Product',recipe});
     } catch (error) {
         res.status(500).send({message: error.message|| "Error Occured"});
     }
@@ -133,13 +133,13 @@ exports.exploreRecipes=async(req, res)=>{
 exports.submitRecipe = async(req, res) => {
     const infoErrorsObj = req.flash('infoErrors');
     const infoSubmitObj = req.flash('infoSubmit');
-    res.render('submit-recipe', { title: 'Project Blog - Submit Project', infoErrorsObj, infoSubmitObj  } );
+    res.render('submit-recipe', { title: 'Submit Project', infoErrorsObj, infoSubmitObj  } );
   }
   
 exports.contact=async(req, res)=>{
     const infoErrorsObj = req.flash('infoErrors');
     const infoSubmitObj = req.flash('infoSubmit');
-    res.render('contact', { title: 'Project Blog - Contact', infoErrorsObj, infoSubmitObj  } );
+    res.render('contact', { title: 'Contact', infoErrorsObj, infoSubmitObj  } );
   }
 
   exports.submitRecipeOnPost = async(req, res) => {
@@ -205,7 +205,7 @@ exports.contactOnPost=async(req, res)=>{
 exports.about=async(req, res)=>{
     
   try {
-      res.render('about',{title: 'Project Blog - About'});
+      res.render('about',{title: 'About'});
   } catch (error) {
       res.status(500).send({message: error.message|| "Error Occured"});
   }
