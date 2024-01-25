@@ -2,17 +2,14 @@ require('../models/database'); // why do I need this here
 const Category=require('../models/Category');
 const Recipe=require('../models/Recipe');
 const Contact=require('../models/Contact');
-
+const path = require('path');
 //Get / Homepage
 exports.homepage=async(req, res)=>{
     
-    const limitnumber=5; // so as to display the only 5 cats on top
-    const categories= await Category.find({}).limit(limitnumber);
-    const lat=await Recipe.find({}).sort({_id: -1}).limit(limitnumber);
-    const Webdev=await Recipe.find({'category':'WEB DEV'}).limit(limitnumber);
-    const food={lat, Webdev};
+    
+    const categories= await Category.find({})
     try {
-        res.render('index',{title: 'Homepage', categories, food});
+        res.render('index',{title: 'Homepage', categories});
     } catch (error) {
         res.status(500).send({message: error.message|| "Error Occured"});
     }
@@ -27,7 +24,7 @@ exports.exploreCategories=async(req, res)=>{
     const categories= await Category.find({}).limit(limitnumber);
     
     try {
-        res.render('categories',{title: 'Categories', categories});
+        res.render('all-categories',{title: 'Categories', categories});
     } catch (error) {
         res.status(500).send({message: error.message|| "Error Occured"});
     }
@@ -50,13 +47,25 @@ exports.exploreCategories=async(req, res)=>{
   }
 
   // Get /recipe/id
-exports.exploreRecipes=async(req, res)=>{
+exports.exploreRecipesView=async(req, res)=>{
     
     try {
         let recipeId= req.params.id;
-        
         const recipe = await Recipe.findById(recipeId);
-        res.render('recipe',{title: 'Product',recipe});
+        res.sendFile(path.join(__dirname,'../../public/pdfuploads',recipe.pdf));
+    } catch (error) {
+        res.status(500).send({message: error.message|| "Error Occured"});
+    }
+    
+    
+  }
+  exports.exploreRecipesDownload=async(req, res)=>{
+    
+    try {
+        let recipeId= req.params.id;
+        const recipe = await Recipe.findById(recipeId);
+        const file = path.join(__dirname,'../../public/pdfuploads',recipe.pdf);
+        res.download(file,recipe.pdf);
     } catch (error) {
         res.status(500).send({message: error.message|| "Error Occured"});
     }
@@ -133,56 +142,39 @@ exports.exploreRecipes=async(req, res)=>{
 exports.submitRecipe = async(req, res) => {
     const infoErrorsObj = req.flash('infoErrors');
     const infoSubmitObj = req.flash('infoSubmit');
-    res.render('submit-recipe', { title: 'Submit Project', infoErrorsObj, infoSubmitObj  } );
+    const categories= await Category.find({})
+    res.render('submit-recipe', { title: 'Submit Project', infoErrorsObj, infoSubmitObj, categories} );
   }
   
-exports.contact=async(req, res)=>{
+  exports.submitRecipeOnPost = async(req, res) => {
+    try {
+  
+      const newRecipe = new Recipe({
+        name: req.body.name,
+        email: req.body.email,
+        category: req.body.category,
+        pdf: req.file.filename
+      });
+      
+      await newRecipe.save();
+
+      
+
+      req.flash('infoSubmit', 'Your Interview exp. has been added.')
+      res.redirect('/submit');
+    } catch (error) {
+      req.flash('infoErrors', error);
+      res.redirect('/submit');
+    }
+  }
+  
+
+  exports.contact=async(req, res)=>{
     const infoErrorsObj = req.flash('infoErrors');
     const infoSubmitObj = req.flash('infoSubmit');
     res.render('contact', { title: 'Contact', infoErrorsObj, infoSubmitObj  } );
   }
 
-  exports.submitRecipeOnPost = async(req, res) => {
-    try {
-  
-      let imageUploadFile;
-      let uploadPath;
-      let newImageName;
-  
-      if(!req.files || Object.keys(req.files).length === 0){
-        console.log('No Files where uploaded.');
-      } else {
-  
-        imageUploadFile = req.files.image;
-        newImageName = Date.now() + imageUploadFile.name;
-  
-        uploadPath = require('path').resolve('./') + '/public/uploads/' + newImageName;
-  
-        imageUploadFile.mv(uploadPath, function(err){
-          if(err) return res.satus(500).send(err);
-        })
-  
-      }
-  
-      const newRecipe = new Recipe({
-        name: req.body.name,
-        description: req.body.description,
-        email: req.body.email,
-        ingredients: req.body.ingredients,
-        category: req.body.category,
-        image: newImageName
-      });
-      
-      await newRecipe.save();
-  
-      req.flash('infoSubmit', 'Project has been added.')
-      res.redirect('/submit-project');
-    } catch (error) {
-      req.flash('infoErrors', error);
-      res.redirect('/submit-project');
-    }
-  }
-  
 exports.contactOnPost=async(req, res)=>{
   try {
     const newContact = new Contact({

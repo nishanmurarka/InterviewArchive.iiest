@@ -1,4 +1,4 @@
-<div class="row flex-lg-row-reverse align-items-center g-5 py-4 mb-4">
+<!-- <div class="row flex-lg-row-reverse align-items-center g-5 py-4 mb-4">
     <div class="col-12 col-lg-6">
       <img src="/img/t.gif" width="607" height="510" class="d-block mx-lg-auto img-fluid" loading="lazy" alt="Projects With Node.js">
     </div>
@@ -17,7 +17,7 @@
     </div>
   
   </div>
-  
+   -->
   
   <!-- Categories Start -->
   <div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3 py-4">
@@ -26,7 +26,7 @@
       <% categories.forEach(function(category,index) { %>
         
 
-      <a href="/categories/<%- category.name %>" class="col text-center category__link">
+      <a href="/company/<%- category.name %>" class="col text-center category__link">
         <div class="category__img shadow">
           <img src= "img/<%- category.image %>" alt="<%- category.name %>" loading="lazy">
         </div>
@@ -36,66 +36,20 @@
     <% } %>
   
       
-    <a href="/categories" class="col text-center category__link">
+    <!-- <a href="/categories" class="col text-center category__link">
       <div class="category__img shadow">
         <img src="img/view-all.png" alt="View All Categories" loading="lazy">
       </div>
       <div class="pt-1">View All</div>
-    </a>
+    </a> -->
   
   </div>
 <!-- Categories End -->
   
-<!-- Latest Start -->
-<section class="pb-4 pt-4">
-  <div class="d-flex mb-2 align-items-center">
-    <h2>Latest Projects</h2>
-    <a href="/project" class="ms-auto">View all</a>
-  </div>
-  
-  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 ">
-    
-    <% if(food!='') { %>
-      <% food.lat.forEach(function(recipe,index) { %>
-        <a href="/project/<%- recipe.id %>" class="col text-center category__link">
-        <div class="category__img category__img--large shadow">
-          <img src= "uploads/<%- recipe.image %>" alt="<%- recipe.name %>" loading="lazy">
-        </div>
-        <div class="pt-1"><%- recipe.name %> </div>
-      </a>
-    <%}) %>
-    <% } %>
-  </div>
-</section>
-<!-- Latest End -->
-
-
-<!-- Indian Start -->
-<section class="pb-4 pt-4">
-  <div class="d-flex mb-2 align-items-center">
-    <h2>Web Dev Projects</h2>
-    <a href="/categories/WEB DEV" class="ms-auto">View More</a>
-  </div>
-  
-  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 ">
-    
-    <% if(typeof food.Webdev!='undefined' && food.Webdev.length>0) { %>
-      <% food.Webdev.forEach(function(recipe,index) { %>
-        <a href="/project/<%- recipe._id %>" class="col text-center category__link">
-        <div class="category__img category__img--large shadow">
-          <img src= "uploads/<%- recipe.image %>" alt="<%- recipe.name %>" loading="lazy">
-        </div>
-        <div class="pt-1"><%- recipe.name %> </div>
-      </a>
-    <%}) %>
-    <% } %>
-  </div>
-</section>
-<!-- Indian End -->
 
 
 <!-- Submit - Start -->
-  <section class="px-4 py-5 my-5 text-center">
+  <!-- <section class="px-4 py-5 my-5 text-center">
     <img src="/img/publish-recipe.png" class="d-block mx-auto mb-4 img-fluid" alt="Publish your project for FREE today" width="566" height="208" loading="lazy">
     <h1 class="display-5 fw-bold">Publish your projects for FREE today</h1>
     <div class="col-lg-6 mx-auto">
@@ -104,6 +58,6 @@
         <a href="/submit-project" class="btn btn-primary btn-dark btn-lg">Submit project</a>
       </div>
     </div>
-  </section>
+  </section> -->
    
   <!-- Submit - End -->
