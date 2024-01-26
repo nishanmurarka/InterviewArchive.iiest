@@ -142,7 +142,7 @@ exports.exploreRecipesView=async(req, res)=>{
 exports.submitRecipe = async(req, res) => {
     const infoErrorsObj = req.flash('infoErrors');
     const infoSubmitObj = req.flash('infoSubmit');
-    const categories= await Category.find({})
+    const categories= await Category.find({}).sort({ name: 1 })
     res.render('submit-recipe', { title: 'Submit', infoErrorsObj, infoSubmitObj, categories} );
   }
   
