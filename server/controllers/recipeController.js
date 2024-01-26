@@ -143,7 +143,7 @@ exports.submitRecipe = async(req, res) => {
     const infoErrorsObj = req.flash('infoErrors');
     const infoSubmitObj = req.flash('infoSubmit');
     const categories= await Category.find({})
-    res.render('submit-recipe', { title: 'Submit Project', infoErrorsObj, infoSubmitObj, categories} );
+    res.render('submit-recipe', { title: 'Submit', infoErrorsObj, infoSubmitObj, categories} );
   }
   
   exports.submitRecipeOnPost = async(req, res) => {
