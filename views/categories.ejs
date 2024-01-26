@@ -12,9 +12,9 @@
   <% if(typeof categoryById!='undefined' && categoryById.length>0) { %>
     <% categoryById.forEach(function(recipe,index) { %>
       <div class="row category_link_new">
-        <div class="col-4"> <%- recipe.name %></div>
-        <div class="col-6"> <%- recipe.email %> </div>
-        <div class="col-2">
+        <div class="col-12 col-md-4"> <%- recipe.name %></div>
+        <div class="col-12 col-md-6"> <%- recipe.email %> </div>
+        <div class="col-12 col-md-2">
           <a href="/project/<%- recipe.id %>/view"><i style="font-size: x-large"; class="bi bi-eye-fill"></i></a>
           <span>|</span>
           <a href="/project/<%- recipe.id %>/download"><i style="font-size: x-large"; class="bi bi-file-earmark-arrow-down-fill"></i></a>
