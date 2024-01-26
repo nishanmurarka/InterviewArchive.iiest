@@ -95,8 +95,8 @@ exports.exploreRecipesView=async(req, res)=>{
     
     try {
         let searchterm=req.body.searchTerm;
-        const recipe= await Recipe.find({$text:{$search: searchterm,$diacriticSensitive:true}});
-        res.render('search',{title: 'Search',recipe});
+        const company= await Category.find({$text:{$search: searchterm,$diacriticSensitive:true}});
+        res.render('search',{title: 'Search',company});
     } catch (error) {
         res.status(500).send({message: error.message|| "Error Occured"});
     }

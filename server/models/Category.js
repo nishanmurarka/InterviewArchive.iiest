@@ -10,5 +10,5 @@ const categorySchema = new mongoose.Schema({
         required: 'This field is requied'
     }
 });
-
+categorySchema.index({name:'text'});
 module.exports=mongoose.model('Category',categorySchema);
