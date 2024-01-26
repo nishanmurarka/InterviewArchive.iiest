@@ -25,11 +25,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nishanmurarka/recipeblog.git"
+    "url": "git+https://github.com/nishanmurarka/InterviewArchive.iiest.git"
   },
   "bugs": {
-    "url": "https://github.com/nishanmurarka/recipeblog/issues"
+    "url": "https://github.com/nishanmurarka/InterviewArchive.iiest/issues"
   },
-  "homepage": "https://github.com/nishanmurarka/recipeblog#readme",
+  "homepage": "https://github.com/nishanmurarka/InterviewArchive.iiest#readme",
   "description": ""
 }
