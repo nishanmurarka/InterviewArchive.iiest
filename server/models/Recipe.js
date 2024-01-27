@@ -15,6 +15,10 @@ const recipeSchema = new mongoose.Schema({
         type: String,
         required: 'This field is requied'
     },
+    role:{
+        type: String,
+        required: 'This field is required'
+    },
     pdf: {
         type: String,
         required: 'This field is requied'

@@ -153,6 +153,7 @@ exports.submitRecipe = async(req, res) => {
         name: req.body.name,
         email: req.body.email,
         category: req.body.category,
+        role: req.body.role,
         pdf: req.file.filename
       });
       
