@@ -14,7 +14,7 @@
       <div class="row category_link_new">
         <div class="col-12 col-md-1"> <%- recipe.role %></div>
         <div class="col-12 col-md-4"> <%- recipe.name %></div>
-        <div class="col-12 col-md-5"> <%- recipe.email %> </div>
+        <div class="col-12 col-md-5"> <a href="mailto:<%- recipe.email %>"> <%- recipe.email %></a>  </div>
         <div class="col-12 col-md-2">
           <a href="/project/<%- recipe.id %>/view"><i style="font-size: x-large"; class="bi bi-eye-fill"></i></a>
           <span>|</span>
